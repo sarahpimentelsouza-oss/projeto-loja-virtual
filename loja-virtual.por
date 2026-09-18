@@ -26,15 +26,15 @@ programa {
 
 
 
- limpa()
-           escreva("=== BEM-VINDO À NOSSA LOJA VIRTUAL ===\n")
-           escreva("---------------------------\n")
-           escreva("MENU PRINCIPAL\n")
-           escreva("1. Ver Produtos e Adicionar ao Carrinho (CREATE)\n")
-           escreva("2. Ver Meus Itens no Carrinho (READ)\n")
-           escreva("3. Alterar Quantidade no Carrinho (UPDATE)\n")
-           escreva("4. Remover Item do Carrinho (DELETE)\n")
-           escreva("0. Finalizar Compra e Ir ao Pagamento\n\n")
+          limpa()
+              escreva("=== BEM-VINDO À NOSSA LOJA VIRTUAL ===\n")
+              escreva("---------------------------\n")
+              escreva("MENU PRINCIPAL\n")
+              escreva("1. Ver Produtos e Adicionar ao Carrinho (CREATE)\n")
+              escreva("2. Ver Meus Itens no Carrinho (READ)\n")
+              escreva("3. Alterar Quantidade no Carrinho (UPDATE)\n")
+              escreva("4. Remover Item do Carrinho (DELETE)\n")
+              escreva("0. Finalizar Compra e Ir ao Pagamento\n\n")
                    escreva("\nEscolha o produto que deseja adicionar: ")
                    leia(opcao_crud)
 
@@ -101,6 +101,37 @@ programa {
                         {
                             escreva("- ", qtd_carrinho_prod3, "x Tênis de Corrida (R$ ", (qtd_carrinho_prod3 * preco_prod3), ")\n")
                         }
+
+     escreva("\nPressione ENTER para voltar ao menu...")
+                    leia(tecla_pausa)
+                    pare
+                  
+                       caso 3:
+                    limpa()
+                    escreva("--- ALTERAR QUANTIDADE NO CARRINHO ---\n")
+                    escreva("1. Camisa Esportiva (No carrinho: ", qtd_carrinho_prod1, ")")
+                    escreva("2. Boné Casual (No carrinho: ", qtd_carrinho_prod2, ")")
+                    escreva("3. Tênis de Corrida (No carrinho: ", qtd_carrinho_prod3, ")")
+
+                    escreva("\nEscolha o item para alterar a quantidade: ")
+                    leia(opcao_crud)
+
+                    escreva("Digite a NOVA quantidade total para este item: ")
+                    leia(quantidade_temp)
+
+                    se (opcao_crud == 1)
+                    {
+                        se (quantidade_temp >= 0 e quantidade_temp <= estoque_prod1)
+                        
+                             estoque_prod1 = estoque_prod1 + qtd_carrinho_prod1
+                             qtd_carrinho_prod1 = quantidade_temp
+                            estoque_prod1 = estoque_prod1 - quantidade_temp
+                            escreva("Quantidade atualizada com sucesso!")
+                        } senao {
+                            escreva("Quantidade inválida ou acima do estoque disponível!")
+                        }
+                    }
+
 
 
 
